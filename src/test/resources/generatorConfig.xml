@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration 
+	PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+	"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+	<!--数据库驱动jar,需要根据本地环境指定路径 -->
+	<classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.36\mysql-connector-java-5.1.36.jar" />
+		
+	<context id="genContext" targetRuntime="Mybatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        
+	    <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+	    	connectionURL="jdbc:mysql://192.168.5.218:3306/onequery" 
+	    	userId="root" 
+	    	password="root" />
+	    	
+	    <!--默认false
+          Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+        -->
+		<javaTypeResolver >
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<!--targetPackage，根据项目的包名重新指定 -->
+		<!--targetProject，需要根据本地路径重新指定 -->
+        <javaModelGenerator targetPackage="com.shijie99.onequality.whitelist.pojo" 
+				targetProject="E:\MyBatis\mybatisGenerator\mybatisGen\src\main\java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        
+        <sqlMapGenerator targetPackage="sqlmapper"  
+				targetProject="E:\MyBatis\mybatisGenerator\mybatisGen\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+	    </sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.shijie99.onequality.whitelist.dao"  
+				targetProject="E:\MyBatis\mybatisGenerator\mybatisGen\src\main\java">
+			<property name="enableSubPackages" value="false" />
+	    </javaClientGenerator>
+	  	<table tableName="channel_configuration" domainObjectName="ChannelConfiguration" />
+	    <!-- 
+	    <table tableName="zx_baseinfo" domainObjectName="ZxBaseInfo" />
+	    <table tableName="zx_oplogs" domainObjectName="ZxOplogs" />
+		<table tableName="zx_refund" domainObjectName="ZxRefund" />
+		<table tableName="zx_uploadfile" domainObjectName="ZxUploadFile" />
+		<table tableName="zx_productinfo" domainObjectName="ZxProductInfo" /> 
+		<table tableName="zx_flightdetails" domainObjectName="ZxFlightDetails" />
+		  -->
+		<!--<table tableName="wx_user" domainObjectName="wx_user"
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false" >-->
+	</context>
+</generatorConfiguration>
